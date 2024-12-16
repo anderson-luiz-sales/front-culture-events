@@ -1,0 +1,31 @@
+.event-form {
+  max-width: 800px; /* Aumentando a largura máxima do formulário */
+  margin: auto; /* Centraliza o formulário */
+  padding: 16px; /* Adiciona espaçamento interno */
+}
+
+mat-card {
+  padding: 16px; /* Espaçamento interno do cartão */
+}
+
+mat-form-field {
+  width: 100%; /* Faz os campos do formulário ocuparem toda a largura disponível */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+  .event-form {
+    padding: 8px; /* Reduz o padding em telas pequenas */
+  }
+
+  mat-card {
+    padding: 8px; /* Reduz o padding do cartão em telas pequenas */
+  }
+}
+
+/* Responsividade para telas ultrawide */
+@media (min-width: 1200px) {
+  .event-form {
+    padding: 32px; /* Adiciona mais padding em telas maiores */
+  }
+}

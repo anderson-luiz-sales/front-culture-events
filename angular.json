@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "culture-events": {
+    "front-culture-events": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/culture-events",
+            "outputPath": "dist/front-culture-events",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -30,12 +30,7 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -65,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "culture-events:build:production"
+              "buildTarget": "front-culture-events:build:production"
             },
             "development": {
-              "buildTarget": "culture-events:build:development"
+              "buildTarget": "front-culture-events:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -101,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "b9018155-a5ce-4725-a6e4-a9b10332b7cc"
+    "analytics": "4b69969d-8f94-4538-a0a9-57c71aa155c7"
   }
 }

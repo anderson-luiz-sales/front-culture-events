@@ -1,0 +1,26 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="event-form">
+  <mat-card>
+    <mat-card-content>
+     
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="eventName" required>
+        <mat-error *ngIf="eventForm.get('eventName')?.invalid && (submitted || eventForm.get('eventName')?.touched)">
+          O campo 'Nome do Evento' é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descriçao</mat-label>
+        <input matInput formControlName="description" required>
+        <mat-error *ngIf="eventForm.get('description')?.invalid && (submitted || eventForm.get('description')?.touched)">
+          O campo 'Descrição do Evento' é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Criar Evento</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
