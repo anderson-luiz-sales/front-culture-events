@@ -1,6 +1,6 @@
 form {
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 1550px;
+    margin: 30px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -13,7 +13,9 @@ form {
   }
   
   button {
-    width: 100%;
+    width: 30%; 
+    margin: 10px auto; 
+    display: block;
   }
   
   @media (max-width: 600px) {

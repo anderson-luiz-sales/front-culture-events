@@ -9,6 +9,7 @@ import { EventFormComponent } from './form-events/form-events.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TableEventsComponent } from './table-events/table-events.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     EventFormComponent,
+    TableEventsComponent,
   ],
   providers: []
 })

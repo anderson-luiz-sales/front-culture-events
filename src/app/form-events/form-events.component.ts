@@ -1,16 +1,16 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // Importar CommonModule
-import { ReactiveFormsModule } from '@angular/forms'; // Importar ReactiveFormsModule
-import { MatInputModule } from '@angular/material/input'; // Importar MatInputModule
-import { MatFormFieldModule } from '@angular/material/form-field'; // Importar MatFormFieldModule
-import { MatButtonModule } from '@angular/material/button'; // Importar MatButtonModule
-import { MatDatepickerModule } from '@angular/material/datepicker'; // Importar MatDatepickerModule
-import { MatNativeDateModule } from '@angular/material/core'; // Importar MatNativeDateModule
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';  
+import { MatInputModule } from '@angular/material/input'; 
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatButtonModule } from '@angular/material/button'; 
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core'; 
 
 @Component({
   selector: 'app-event-form',
-  standalone: true, // Indica que este é um componente autônomo
+  standalone: true, 
   templateUrl: './form-events.component.html',
   styleUrls: ['./form-events.component.css'],
   imports: [

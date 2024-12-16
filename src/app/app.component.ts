@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
 import { RouterOutlet } from '@angular/router';
+import { TableEventsComponent } from "./table-events/table-events.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, TableEventsComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'front-culture-events';
 }
