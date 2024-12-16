@@ -28,9 +28,11 @@ import { EventService } from '../service/event.service';
 export class EventFormComponent implements OnInit {
   eventForm: FormGroup;
   @Output() formSubmitted = new EventEmitter<any>();
+  isUpdating: boolean = false; 
 
   constructor(private fb: FormBuilder, private eventService: EventService) {
     this.eventForm = this.fb.group({
+      id: [{ value: null, disabled: true }], 
       eventName: ['', [Validators.required, Validators.maxLength(100)]],
       description: ['', [Validators.maxLength(500)]],
       eventDate: [this.getCurrentDateTime(), [Validators.required]],
@@ -39,30 +41,59 @@ export class EventFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const navigation = window.history.state;
+    if (navigation && navigation.event) {
+      const event: EventResponseDTO = navigation.event;
+      this.eventForm.patchValue(event); 
+      this.isUpdating = false; 
+    }
+  }
 
   private getCurrentDateTime(): string {
     const now = new Date();
-    const isoString = now.toISOString();
-    const localDateString = isoString.slice(0, 10);
+    const localDateString = now.toISOString().slice(0, 10);
     const localTimeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
     return `${localDateString}T${localTimeString}`;
+  }
+
+  toggleUpdate(): void {
+    if (this.isUpdating) {
+      this.onSubmit();
+    } else {
+      this.isUpdating = true;
+      this.eventForm.get('id')?.enable(); 
+    }
   }
 
   onSubmit() {
     if (this.eventForm.valid) {
       const eventData: EventResponseDTO = this.eventForm.value; 
-      this.eventService.createEvent(eventData).subscribe({
-        next: (response: any) => {
-          console.log('Evento criado com sucesso:', response);
-          this.formSubmitted.emit(response); 
-          this.eventForm.reset(); 
-          location.reload(); 
-        },
-        error: (error: any) => {
-          console.error('Erro ao criar evento:', error);
-        }
-      });
+      if (eventData.id) {
+        this.eventService.updateEvent(eventData.id, eventData).subscribe({
+          next: (response) => {
+            console.log('Evento atualizado com sucesso:', response);
+            this.formSubmitted.emit(response); 
+            this.eventForm.reset(); 
+            location.reload(); 
+          },
+          error: (error) => {
+            console.error('Erro ao atualizar evento:', error);
+          }
+        });
+      } else {
+        this.eventService.createEvent(eventData).subscribe({
+          next: (response) => {
+            console.log('Evento criado com sucesso:', response);
+            this.formSubmitted.emit(response); 
+            this.eventForm.reset(); 
+            location.reload(); 
+          },
+          error: (error) => {
+            console.error('Erro ao criar evento:', error);
+          }
+        });
+      }
     }
   }
 }

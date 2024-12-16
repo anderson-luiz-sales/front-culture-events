@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EventResponseDTO } from '../models/event.model'; // Ajuste o caminho conforme necessário
-import { EventService } from '../service/event.service';
+import { EventResponseDTO } from '../models/event.model'; 
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router'; 
+import { EventService } from '../service/event.service';
 
 @Component({
   selector: 'app-table-events',
@@ -19,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class TableEventsComponent implements OnInit {
   events: EventResponseDTO[] = [];
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadEvents();
@@ -30,13 +31,7 @@ export class TableEventsComponent implements OnInit {
       this.events = data;
     });
   }
-
-  updateEvent(event: EventResponseDTO): void {
-    // Aqui você pode abrir um modal para editar ou qualquer outra lógica
-    console.log('Atualizar evento: ', event);
-    // Implementar lógica de atualização aqui
-  }
-
+  
   deleteEvent(id: number): void {
     this.eventService.deleteEvent(id).subscribe(() => {
       this.events = this.events.filter(event => event.id !== id);

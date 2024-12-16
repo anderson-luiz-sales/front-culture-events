@@ -1,34 +1,51 @@
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
+    <mat-label>ID do Evento</mat-label>
+    <input matInput formControlName="id" [disabled]="!isUpdating" required>
+    <mat-error *ngIf="eventForm.get('id')?.hasError('required')">O campo 'ID do Evento' é obrigatório.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
     <mat-label>Nome do Evento</mat-label>
     <input matInput formControlName="eventName" required>
-    <mat-error *ngIf="eventForm.get('eventName')?.hasError('required')">O campo 'Nome do Evento' é obrigatório.</mat-error>
-    <mat-error *ngIf="eventForm.get('eventName')?.hasError('maxlength')">O campo 'Nome do Evento' deve ter no máximo 100 caracteres.</mat-error>
+    <mat-error *ngIf="eventForm.get('eventName')?.hasError('required')">O campo 'Nome do Evento' é
+      obrigatório.</mat-error>
+    <mat-error *ngIf="eventForm.get('eventName')?.hasError('maxlength')">O campo 'Nome do Evento' deve ter no máximo 100
+      caracteres.</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Descrição do Evento</mat-label>
     <textarea matInput formControlName="description"></textarea>
-    <mat-error *ngIf="eventForm.get('description')?.hasError('maxlength')">O campo 'Descrição' deve ter no máximo 500 caracteres.</mat-error>
+    <mat-error *ngIf="eventForm.get('description')?.hasError('maxlength')">O campo 'Descrição' deve ter no máximo 500
+      caracteres.</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Data e Hora do Evento</mat-label>
     <input matInput type="datetime-local" formControlName="eventDate" required>
-    <mat-error *ngIf="eventForm.get('eventDate')?.hasError('required')">O campo 'Data e Hora do Evento' é obrigatório.</mat-error>
+    <mat-error *ngIf="eventForm.get('eventDate')?.hasError('required')">O campo 'Data e Hora do Evento' é
+      obrigatório.</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Local do Evento</mat-label>
     <input matInput formControlName="location" required>
-    <mat-error *ngIf="eventForm.get('location')?.hasError('required')">O campo 'Local do Evento' é obrigatório.</mat-error>
+    <mat-error *ngIf="eventForm.get('location')?.hasError('required')">O campo 'Local do Evento' é
+      obrigatório.</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Categoria do Evento</mat-label>
     <input matInput formControlName="category" required>
-    <mat-error *ngIf="eventForm.get('category')?.hasError('required')">O campo 'Categoria do Evento' é obrigatório.</mat-error>
+    <mat-error *ngIf="eventForm.get('category')?.hasError('required')">O campo 'Categoria do Evento' é
+      obrigatório.</mat-error>
   </mat-form-field>
 
-  <button mat-raised-button type="submit" color="primary">Criar</button>
+  <div class="button-container">
+    <button mat-raised-button type="submit" color="primary" *ngIf="!isUpdating">Salvar</button>
+    <button mat-raised-button type="button" color="warn" (click)="toggleUpdate()">
+      {{ isUpdating ? 'Atualizar' : 'Atualizar' }}
+    </button>
+  </div>
 </form>
