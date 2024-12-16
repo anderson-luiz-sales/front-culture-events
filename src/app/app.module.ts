@@ -27,5 +27,6 @@ import { TableEventsComponent } from './table-events/table-events.component';
     TableEventsComponent,
   ],
   providers: []
+  
 })
 export class AppModule { }

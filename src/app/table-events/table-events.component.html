@@ -1,5 +1,10 @@
 <table mat-table [dataSource]="events" class="mat-elevation-z8">
 
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let event"> {{ event.id }} </td>
+  </ng-container>
+
   <ng-container matColumnDef="eventName">
     <th mat-header-cell *matHeaderCellDef> Nome do Evento </th>
     <td mat-cell *matCellDef="let event"> {{ event.eventName }} </td>
@@ -33,6 +38,6 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['eventName', 'description', 'eventDate', 'location', 'category', 'actions']"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['eventName', 'description', 'eventDate', 'location', 'category', 'actions'];"></tr>
+  <tr mat-header-row *matHeaderRowDef="['id', 'eventName', 'description', 'eventDate', 'location', 'category', 'actions']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['id', 'eventName', 'description', 'eventDate', 'location', 'category', 'actions'];"></tr>
 </table>
