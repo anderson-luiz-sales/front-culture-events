@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { EventFormComponent } from './form-events/form-events.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
 import { MatNativeDateModule } from '@angular/material/core';
-import { RouterOutlet } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    AppRoutingModule,
+    BrowserModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    MatInputModule,
+    MatFormFieldModule,
     MatButtonModule,
-    MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    RouterOutlet
+    EventFormComponent,
   ],
-  providers: [provideHttpClient()] 
+  providers: []
 })
 export class AppModule { }
