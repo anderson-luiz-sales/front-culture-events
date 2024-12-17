@@ -1,8 +1,7 @@
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
     <mat-label>ID do Evento</mat-label>
-    <input matInput formControlName="id" [disabled]="!isUpdating" required>
-    <mat-error *ngIf="eventForm.get('id')?.hasError('required')">O campo 'ID do Evento' é obrigatório.</mat-error>
+    <input matInput formControlName="id" [disabled]="!isUpdating">
   </mat-form-field>
 
   <mat-form-field appearance="fill">

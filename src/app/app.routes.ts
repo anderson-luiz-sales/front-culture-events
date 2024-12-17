@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { EventFormComponent } from './events/components/form-events/form-events.component';
+import { TableEventsComponent } from './events/components/table-events/table-events.component';
 
 export const routes: Routes = [
-  { path: 'events/:id', component: EventFormComponent }, 
-  { path: 'events', component: EventFormComponent },    
+  { path: 'events', component: TableEventsComponent },
+  { path: 'events/:id', component: TableEventsComponent },    
   { path: '', redirectTo: '/events', pathMatch: 'full' }
 ];

@@ -23,8 +23,8 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-  ],
+    MatNativeDateModule
+],
 })
 export class EventFormComponent implements OnInit {
   eventForm: FormGroup;
@@ -38,7 +38,7 @@ export class EventFormComponent implements OnInit {
     private router: Router,
   ) {
     this.eventForm = this.fb.group({
-      id: [{ value: null, disabled: true }],
+      id: [{ value: null, disabled: true }], 
       eventName: ['', [Validators.required, Validators.maxLength(100)]],
       description: ['', [Validators.maxLength(500)]],
       eventDate: [this.getCurrentDateTime(), [Validators.required]],
@@ -83,9 +83,7 @@ export class EventFormComponent implements OnInit {
 
   findById(): void {
     const eventData: EventResponseDTO = this.eventForm.value;
-    console.log('ID buscado:', eventData.id);
     if (eventData.id) {
-      console.log( eventData.id);
       this.router.navigate(['/events', eventData.id]); 
     } else {
       console.error('ID do evento não fornecido.');
@@ -101,6 +99,7 @@ export class EventFormComponent implements OnInit {
             console.log('Evento atualizado com sucesso:', response);
             this.formSubmitted.emit(response);
             this.eventForm.reset();
+            this.router.navigate(['/events']);
             location.reload();
           },
           error: (error) => {
@@ -113,7 +112,8 @@ export class EventFormComponent implements OnInit {
             console.log('Evento criado com sucesso:', response);
             this.formSubmitted.emit(response);
             this.eventForm.reset();
-            location.reload();
+            this.router.navigate(['/events']);
+            location.reload(); 
           },
           error: (error) => {
             console.error('Erro ao criar evento:', error);
