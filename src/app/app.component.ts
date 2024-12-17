@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "./header/header.component";
+import { HeaderComponent } from "./events/components/header/header.component";
 import { RouterOutlet } from '@angular/router';
-import { TableEventsComponent } from "./table-events/table-events.component";
+import { TableEventsComponent } from "./events/components/table-events/table-events.component";
 
 @Component({
   selector: 'app-root',

@@ -5,11 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { EventFormComponent } from './form-events/form-events.component';
+import { EventFormComponent } from './events/components/form-events/form-events.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { MatNativeDateModule } from '@angular/material/core';
-import { TableEventsComponent } from './table-events/table-events.component';
+import { TableEventsComponent } from './events/components/table-events/table-events.component';
 
 @NgModule({
   declarations: [
